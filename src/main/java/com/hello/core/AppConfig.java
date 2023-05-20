@@ -31,6 +31,9 @@ public class AppConfig {
     //call AppConfig.orderService
 
     //어떻게 스프링은 memberRepository를 3번 호출하지 않고 한 번만 호출하는 걸까?
+    // @Configuration을 통해, @Bean이 붙은 메서드마다 이미 스프링 컨테이너에 객체가 등록되어 있으면 해당 객체를 반환하고,
+    // 없다면 새로운 객체를 생성해서 반환하기 때문이다.
+    // 이 로직은 CGLIB라는 Appconfig를 상속받는 새로운 클래스에 구현되어 있고, 이를 스프링이 자동으로 생성한다
     @Bean
     public MemberService memberService() {
         System.out.println("call AppConfig.memberService");
